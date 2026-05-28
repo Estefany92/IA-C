@@ -4,74 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crashcat - Detector</title>
 
-    <title>Crashcat - Detector de Accidentes</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="app-bg text-white min-h-screen overflow-x-hidden">
+<body>
 
-    <div class="container mx-auto px-6 py-10">
+    <div class="background"></div>
+
+    <main class="app">
 
         <!-- HEADER -->
-        <div class="flex items-center justify-between mb-12">
-
+        <header class="header">
             <div>
-                <h1 class="text-5xl font-black title-glow">
-                    CRASHCAT
-                </h1>
+                <h1>Crashcat</h1>
+                <p>Detección inteligente de accidentes en tiempo real</p>
+            </div>
+        </header>
 
-                <p class="text-gray-300 mt-3 tracking-wide">
-                    Sistema de detección de accidentes en tiempo real
-                </p>
+        <!-- CARD PRINCIPAL -->
+        <section class="card">
+
+            <!-- DROP ZONE -->
+            <div id="dropZone" class="dropzone">
+                <div class="icon">⬆️</div>
+                <h2>Sube tu evidencia</h2>
+                <p>Arrastra una imagen o video aquí o haz clic</p>
             </div>
 
-        </div>
+            <input type="file" id="fileInput" accept="image/*,video/*" hidden>
 
-        <!-- DROP ZONE -->
-        <div id="dropZone"
-            class="drop-zone relative border-2 border-dashed rounded-3xl p-20 text-center cursor-pointer">
-
-            <div class="space-y-4">
-
-                <div class="text-7xl animate-bounce">
-                    🚨
-                </div>
-
-                <h2 class="text-3xl font-bold">
-                    Subir evidencia (imagen o video)
-                </h2>
-
-                <p class="text-gray-300">
-                    Arrastra aquí o haz clic para analizar
-                </p>
-
+            <!-- LOADER -->
+            <div id="loading" class="loader-wrap hidden">
+                <div class="loader"></div>
+                <span>Analizando archivo...</span>
             </div>
-        </div>
 
-        <input type="file" id="fileInput" accept="image/*,video/*" class="hidden">
+            <!-- RESULTADOS -->
+            <div class="media-container">
+                <canvas id="canvas"></canvas>
+                <video id="videoPlayer" controls class="hidden"></video>
+            </div>
 
-        <!-- LOADER -->
-        <div id="loading" class="hidden flex justify-center items-center mt-10">
-            <div class="loader"></div>
-        </div>
+            <!-- DESCARGA -->
+            <div id="downloadContainer"></div>
 
-        <!-- CANVAS -->
-        <div class="mt-10">
-            <canvas id="canvas" class="media-box w-full rounded-3xl"></canvas>
-        </div>
+        </section>
 
-        <!-- VIDEO -->
-        <video id="videoPlayer" controls class="hidden mt-10 media-box w-full"></video>
-
-        <!-- DOWNLOAD -->
-        <div id="downloadContainer" class="mt-8"></div>
-
-    </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
 
-</html>
+</html> 
